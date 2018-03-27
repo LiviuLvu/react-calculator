@@ -1,0 +1,43 @@
+$btnHeight: 50px;
+
+.wide {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.grid-item {
+  text-align: center;
+  background-color: #e7e7e7;
+  height: $btnHeight;
+  &:active {
+    background-color: #c5c5c5;
+  }
+  
+  button {
+    min-width: 30px;
+    height: $btnHeight;
+    font-weight: 300;
+    font-size: 20px;
+    background: none;
+    margin: auto;
+    border: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.mainOperation {
+  background-color: #f69232;
+  button {
+    color: white;
+    font-size: 26px;
+    height: 46px;
+  }
+  button:active {
+    background-color: #e08026;
+  }
+}
+
+.secondary {
+  background-color: #d8d8d8;
+}
