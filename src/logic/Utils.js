@@ -27,7 +27,7 @@ export function calculate(obj, buttonName) {
     }
   }
 
-  if (buttonName === 'AC') {
+  if (buttonName === 'AC' || buttonName === 'Escape') {
     return {
       displayValue: '0'
     }
@@ -40,9 +40,16 @@ export function calculate(obj, buttonName) {
   }
 
   if (buttonName === '±') {
-    const newDisplayValue = parseFloat(displayValue) * -1;
     return {
-      displayValue: newDisplayValue
+      displayValue: parseFloat(displayValue) * -1
+    }
+  }
+
+  if (buttonName === '%') {
+    if (displayValue === '0')
+      return
+    return {
+      displayValue: displayValue / 100
     }
   }
 
