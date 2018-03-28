@@ -9,7 +9,7 @@ export function calculate(obj, buttonName) {
       return {
         displayValue: buttonName,
       };
-    }    
+    }
     return {
       displayValue: displayValue + buttonName,
     }
@@ -27,5 +27,16 @@ export function calculate(obj, buttonName) {
     }
   }
 
-  
+  if (buttonName === 'AC') {
+    return {
+      displayValue: '0'
+    }
+  }
+
+  if (buttonName === 'Backspace') {
+    return {
+      displayValue: displayValue.substring(0, displayValue.length - 1) || '0'
+    }
+  }
+
 }
