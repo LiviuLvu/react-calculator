@@ -10,7 +10,7 @@ export default class Button extends Component {
     let mainOperation = this.props.mainOperation ? "mainOperation" : "";
     let secondary = this.props.secondary ? "secondary" : "";
     let wide =  this.props.wide ? "wide" : "";
-    let content = this.props.name === '+/-' ? <span><sup>+</sup>⁄<sub>-</sub></span> : this.props.name;
+    let content = this.props.name === '±' ? <span><sup>+</sup>⁄<sub>-</sub></span> : this.props.name;
     
     return(
       <div className={`grid-item ${mainOperation} ${secondary} ${wide}`}>

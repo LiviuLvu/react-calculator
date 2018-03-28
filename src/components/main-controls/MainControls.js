@@ -11,7 +11,7 @@ export default class MainControls extends Component {
     return(
       <div className="grid-container">
           <Button name="AC" clickHandler={this.handleClick} secondary />
-          <Button name="+/-" clickHandler={this.handleClick} secondary />
+          <Button name="±" clickHandler={this.handleClick} secondary />
           <Button name="%" clickHandler={this.handleClick} secondary />
           <Button name="÷" clickHandler={this.handleClick} mainOperation />
           <Button name="7" clickHandler={this.handleClick} />

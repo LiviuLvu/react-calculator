@@ -39,4 +39,11 @@ export function calculate(obj, buttonName) {
     }
   }
 
+  if (buttonName === '±') {
+    const newDisplayValue = parseFloat(displayValue) * -1;
+    return {
+      displayValue: newDisplayValue
+    }
+  }
+
 }
