@@ -9,7 +9,10 @@ class CalculatorApp extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      displayValue: '0'
+      memoryValue: null,
+      displayValue: '0',
+      operator: null,
+      waitingForOperand: false
     }
   }
 
