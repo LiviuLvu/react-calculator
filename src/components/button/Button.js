@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './Button.css';
 
 export default class Button extends Component {
+  handleClick = () => {
+    this.props.clickHandler(this.props.name);
+  }
+  
   render(){
     let mainOperation = this.props.mainOperation ? "mainOperation" : "";
     let secondary = this.props.secondary ? "secondary" : "";

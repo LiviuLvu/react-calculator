@@ -1,10 +1,5 @@
 $btnHeight: 50px;
 
-.wide {
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
-
 .grid-item {
   text-align: center;
   background-color: #e7e7e7;
@@ -15,6 +10,7 @@ $btnHeight: 50px;
   
   button {
     min-width: 30px;
+    width: 100%;
     height: $btnHeight;
     font-weight: 300;
     font-size: 20px;
@@ -29,9 +25,9 @@ $btnHeight: 50px;
 .mainOperation {
   background-color: #f69232;
   button {
+    padding-bottom: 4px;
     color: white;
     font-size: 26px;
-    height: 46px;
   }
   button:active {
     background-color: #e08026;
@@ -40,4 +36,13 @@ $btnHeight: 50px;
 
 .secondary {
   background-color: #d8d8d8;
+}
+
+.wide {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  button {
+    text-align: left;
+    padding-left: 22px;
+  }
 }
