@@ -1,9 +1,10 @@
 .input-container {
   padding: 12px 10px 0px;
   height: 66px;
+  margin-left: 6px;
+  overflow: hidden;
   font-weight: 100;
   font-size: 50px;
-  direction: rtl;
   white-space: nowrap;
   font-family: Helvetica, Arial, sans-serif;
   text-align: right;
@@ -11,5 +12,6 @@
   color: white;
   div {
     overflow: hidden;
+    float: right;
   }
 }
