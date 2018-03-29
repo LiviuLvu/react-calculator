@@ -6,6 +6,9 @@ export default class MainControls extends Component {
   handleNumberInput = (number) => {
     this.props.handleNumberInput(number);
   }
+  handleDotInput = (number) => {
+    this.props.handleDotInput(number);
+  }
   handleOperationInput = (buttonName) => {
     this.props.handleOperationInput(buttonName);
   }
@@ -36,7 +39,7 @@ export default class MainControls extends Component {
           <Button name="3" clickHandler={this.handleNumberInput} />
           <Button name="+" clickHandler={this.handleOperationInput} mainOperation />
           <Button name="0" clickHandler={this.handleNumberInput} wide />
-          <Button name="," clickHandler={this.handleNumberInput} />
+          <Button name="," clickHandler={this.handleDotInput} />
           <Button name="=" clickHandler={this.handleResultOutput} mainOperation />
       </div>
     )

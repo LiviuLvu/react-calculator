@@ -3,7 +3,7 @@ import'./CalculatorApp.css';
 
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
-import { writeNumber, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
+import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 
 class CalculatorApp extends Component {
@@ -11,7 +11,7 @@ class CalculatorApp extends Component {
     super(props);
     this.state = {
       displayValue: 0,
-      waitingForOperator: false,
+      waitingForNumber: false,
       wasExpressionEvaluated: false
     }
   }
@@ -31,6 +31,12 @@ class CalculatorApp extends Component {
     // add numbers to displayValue
     this.setState(
       writeNumber(this.state, buttonName)
+    );
+  }
+  handleDotInput = () => {
+    // add numbers to displayValue
+    this.setState(
+      writeDot(this.state)
     );
   }
   handleOperationInput = (buttonName) => {
@@ -58,6 +64,7 @@ class CalculatorApp extends Component {
         <Display value={this.state.displayValue} />
         <MainControls
           handleNumberInput={this.handleNumberInput}
+          handleDotInput={this.handleDotInput}
           handleOperationInput={this.handleOperationInput}
           handleAllClear={this.handleAllClear}
           handleResultOutput={this.handleResultOutput} />
