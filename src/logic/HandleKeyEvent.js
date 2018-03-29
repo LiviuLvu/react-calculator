@@ -10,9 +10,12 @@ export function handleKeyEvent(state, key) {
   }
 
   // write operator
-if ((/^[\+\-*\/]+$/).test(key)) {
+  if ((/^[\+\-*\/]+$/).test(key)) {
     return writeOperator(state, key);
   }
 
-
+  // calculate total
+  if (key === 'Enter') {
+    return writeResult(state);
+  }
 }
