@@ -28,3 +28,9 @@ export function writeResult(state) {
   }
 }
 
+// clean memory and display
+export function clearAll() {
+  return {
+    displayValue: '0'
+  }
+}

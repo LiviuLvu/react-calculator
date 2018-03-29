@@ -12,11 +12,14 @@ export default class MainControls extends Component {
   handleResultOutput = (buttonName) => {
     this.props.handleResultOutput(buttonName);
   }
+  handleAllClear = (buttonName) => {
+    this.props.handleAllClear(buttonName);
+  }
 
   render(){
     return(
       <div className="grid-container">
-          <Button name="AC" clickHandler={this.handleOperationInput} secondary />
+          <Button name="AC" clickHandler={this.handleAllClear} secondary />
           <Button name="±" clickHandler={this.handleOperationInput} secondary />
           <Button name="%" clickHandler={this.handleOperationInput} secondary />
           <Button name="/" clickHandler={this.handleOperationInput} mainOperation />
