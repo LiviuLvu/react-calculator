@@ -22,8 +22,10 @@ export function writeNumber(state, number) {
 // add dot to display
 export function writeDot(state) {
   let {displayValue, waitingForNumber} = state;
+  let stringArray = String(displayValue).split(' ');
+  let ifNumberHasDot = stringArray[stringArray.length - 1];
 
-  if (String(displayValue).slice(-1) === '.') {
+  if ((/\./g).test(ifNumberHasDot)) {
     return {}
   }
   if (waitingForNumber) {
@@ -43,12 +45,13 @@ export function writeOperationType(state, operator) {
   let {displayValue, waitingForNumber} = state;
   
   if (waitingForNumber) {
-    const removedLastOperator = displayValue.slice(0, displayValue.length - 1);
-    displayValue = removedLastOperator;
+    let stringArray = displayValue.split(' ');
+    let removeLastOperator =  stringArray.slice(0, stringArray.length - 2);
+    displayValue = removeLastOperator.join(' ');
   }
   
   return {
-    displayValue: displayValue + operator,
+    displayValue: displayValue + ' ' + operator + ' ',
     waitingForNumber: true,
     wasExpressionEvaluated: false
   }
@@ -78,7 +81,7 @@ export function modifyInput(state, modifier) {
     console.log(lastNumber);
     const toggleInteger = parseFloat(lastNumber) * -1;
     return {
-      displayValue: trimDisplayValue + ' ' + toggleInteger
+      displayValue: trimDisplayValue + toggleInteger
     }
   }
 }
