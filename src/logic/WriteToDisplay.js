@@ -78,7 +78,7 @@ export function modifyInput(state, modifier) {
     console.log(lastNumber);
     const toggleInteger = parseFloat(lastNumber) * -1;
     return {
-      displayValue: trimDisplayValue + toggleInteger
+      displayValue: trimDisplayValue + ' ' + toggleInteger
     }
   }
 }
@@ -88,6 +88,7 @@ export function modifyInput(state, modifier) {
 export function writeResult(state) {
   let {displayValue, waitingForNumber} = state;
   if (waitingForNumber) {
+    // eval breaks if string ends with operation character
     displayValue = displayValue.slice(0, displayValue.length - 1);
   }
   return {
