@@ -1,7 +1,10 @@
 // add numbers to displayValue
 export function writeNumber(state, number) {
-  const {displayValue} = state;
-  
+  let {displayValue, wasExpressionEvaluated} = state;
+  if (wasExpressionEvaluated) {
+    displayValue = ''
+  }
+
   if (String(displayValue) === '0') {
     return {
       displayValue: number,
@@ -9,22 +12,40 @@ export function writeNumber(state, number) {
   }
   return {
     displayValue: displayValue + number,
+    waitingForOperator: false,
+    wasExpressionEvaluated: false
   }
 }
 
 // add operators to displayValue
-export function writeOperator(state, operator) {
-  const {displayValue} = state;
+export function writeOperationType(state, operator) {
+  let {displayValue, waitingForOperator} = state;
+  if (waitingForOperator) {
+    const removedLastOperator = displayValue.slice(0, displayValue.length - 1);
+    return {
+      displayValue: removedLastOperator + operator,
+      waitingForOperator: true,
+      wasExpressionEvaluated: false
+    };
+  }
+  
   return {
-    displayValue: displayValue + operator
+    displayValue: displayValue + operator,
+    waitingForOperator: true,
+    wasExpressionEvaluated: false
   }
 }
 
-// calculate displayValue
+// calculate display value
 export function writeResult(state) {
-  const {displayValue} = state;
+  let {displayValue, waitingForOperator} = state;
+  if (waitingForOperator) {
+    displayValue = displayValue.slice(0, displayValue.length - 1);
+  }
   return {
-    displayValue: eval(displayValue)
+    displayValue: eval(displayValue),
+    waitingForOperator: false,
+    wasExpressionEvaluated: true
   }
 }
 

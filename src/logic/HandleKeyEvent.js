@@ -1,4 +1,4 @@
-import { writeNumber, writeOperator, writeResult, clearAll } from './WriteToDisplay';
+import { writeNumber, writeOperationType, writeResult, clearAll } from './WriteToDisplay';
 
 export function handleKeyEvent(state, key) {
   // convert comma to dot
@@ -11,7 +11,7 @@ export function handleKeyEvent(state, key) {
 
   // write operator
   if ((/^[+\-*/]+$/).test(key)) {
-    return writeOperator(state, key);
+    return writeOperationType(state, key);
   }
 
   // calculate total
