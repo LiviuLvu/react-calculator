@@ -3,7 +3,7 @@ import'./CalculatorApp.css';
 
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
-import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
+import { writeNumber, writeDot, writeOperationType, modifyInput, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 
 class CalculatorApp extends Component {
@@ -45,6 +45,12 @@ class CalculatorApp extends Component {
       writeOperationType(this.state, buttonName)
     )
   }
+  handleModifyInput = (buttonName) => {
+    // modify value inside input
+    this.setState(
+      modifyInput(this.state, buttonName)
+    )
+  }
   handleAllClear = () => {
     // clean memory and display
     this.setState(
@@ -66,6 +72,7 @@ class CalculatorApp extends Component {
           handleNumberInput={this.handleNumberInput}
           handleDotInput={this.handleDotInput}
           handleOperationInput={this.handleOperationInput}
+          handleModifyInput={this.handleModifyInput}
           handleAllClear={this.handleAllClear}
           handleResultOutput={this.handleResultOutput} />
       </div>
