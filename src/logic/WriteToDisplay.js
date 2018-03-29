@@ -20,13 +20,10 @@ export function writeNumber(state, number) {
 // add operators to displayValue
 export function writeOperationType(state, operator) {
   let {displayValue, waitingForOperator} = state;
+  
   if (waitingForOperator) {
     const removedLastOperator = displayValue.slice(0, displayValue.length - 1);
-    return {
-      displayValue: removedLastOperator + operator,
-      waitingForOperator: true,
-      wasExpressionEvaluated: false
-    };
+    displayValue = removedLastOperator;
   }
   
   return {
