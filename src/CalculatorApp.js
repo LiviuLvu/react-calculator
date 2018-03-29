@@ -3,36 +3,43 @@ import'./CalculatorApp.css';
 
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
-import { calculate } from './logic/Utils';
+import { writeNumber, writeOperator, writeResult } from './logic/Utils';
 
 class CalculatorApp extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      memoryValue: null,
-      displayValue: '0',
-      operator: null,
-      waitingForOperand: false
+      displayValue: 0,
     }
   }
 
-  componentDidMount() {
-    document.addEventListener('keydown', (event)=>this.inputCommand(event.key));
+  handleNumberInput = (buttonName) => {
+    // add numbers to displayValue
+    this.setState(
+      writeNumber(this.state, buttonName)
+    );
   }
-  
-  componentWillUnmount() {
-    document.removeEventListener('keydown', (event)=>this.inputCommand(event.key))
+  handleOperationInput = (buttonName) => {
+    // add operators to displayValue
+    this.setState(
+      writeOperator(this.state, buttonName)
+    )
   }
-
-  inputCommand = (buttonName) => {
-    this.setState(calculate(this.state, buttonName));
+  handleResultOutput = () => {
+    // evaluate displayValue
+    this.setState(
+      writeResult(this.state)
+    )
   }
   
   render() {
     return (
       <div className="calculator-app">
         <Display value={this.state.displayValue} />
-        <MainControls clickHandler={this.inputCommand} />
+        <MainControls
+          handleNumberInput={this.handleNumberInput}
+          handleOperationInput={this.handleOperationInput}
+          handleResultOutput={this.handleResultOutput} />
       </div>
     );
   }
