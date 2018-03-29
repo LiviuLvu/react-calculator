@@ -3,7 +3,8 @@ import'./CalculatorApp.css';
 
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
-import { writeNumber, writeOperator, writeResult } from './logic/Utils';
+import { writeNumber, writeOperator, writeResult } from './logic/WriteToDisplay';
+import { handleKeyEvent } from './logic/HandleKeyEvent';
 
 class CalculatorApp extends Component {
   constructor (props) {
@@ -11,6 +12,17 @@ class CalculatorApp extends Component {
     this.state = {
       displayValue: 0,
     }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', (event) => {
+      this.setState(
+        handleKeyEvent(this.state, event.key)
+      );
+    });
+  }
+  
+  componentWillUnmount() {
   }
 
   handleNumberInput = (buttonName) => {

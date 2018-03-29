@@ -20,10 +20,11 @@ export function writeOperator(state, operator) {
   }
 }
 
-// evaluate displayValue
+// calculate displayValue
 export function writeResult(state) {
   const {displayValue} = state;
   return {
     displayValue: eval(displayValue)
   }
 }
+
