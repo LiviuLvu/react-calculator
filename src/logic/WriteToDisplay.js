@@ -22,8 +22,8 @@ export function writeNumber(state, number) {
 // add dot to display
 export function writeDot(state) {
   let {displayValue, waitingForNumber} = state;
-
-  if ((/\.$|\. $/g).test(displayValue)) {
+  const hasDot = /\.$|\. $/g;
+  if (hasDot.test(displayValue)) {
     return;
   }
   if (waitingForNumber) {
@@ -86,6 +86,7 @@ export function removeLastItem(state) {
   let {displayValue, waitingForNumber} = state;
   if (!displayValue) return {};
   let lastItemRemoved = String(displayValue).slice(0, -1);
+  if (!lastItemRemoved) lastItemRemoved = '0'; 
   return {
     displayValue: lastItemRemoved,
     waitingForNumber: false
