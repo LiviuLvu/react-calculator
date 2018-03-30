@@ -1,4 +1,4 @@
-import { writeNumber, writeOperationType, writeResult, clearAll } from './WriteToDisplay';
+import { writeNumber, writeOperationType, writeResult, clearAll, removeLastItem } from './WriteToDisplay';
 import { modifyInput } from './Modifyers';
 
 export function handleKeyEvent(state, key) {
@@ -20,6 +20,11 @@ export function handleKeyEvent(state, key) {
   // clear display and memory
   if (key === 'Escape') {
     return clearAll();
+  }
+
+  // clear last character
+  if (key === 'Backspace') {
+    return removeLastItem(state);
   }
 
   // modify last number in display

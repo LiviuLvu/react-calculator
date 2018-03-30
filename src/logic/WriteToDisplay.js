@@ -80,3 +80,14 @@ export function clearAll() {
     waitingForNumber: false
   }
 }
+
+
+// remove last character from display
+export function removeLastItem(state) {
+  let {displayValue, waitingForNumber} = state;
+  let lastItemRemoved = displayValue.slice(0, -1);
+  return {
+    displayValue: lastItemRemoved,
+    waitingForNumber: false
+  }
+}
