@@ -1,4 +1,5 @@
 import { writeNumber, writeOperationType, writeResult, clearAll } from './WriteToDisplay';
+import { modifyInput } from './Modifyers';
 
 export function handleKeyEvent(state, key) {
   // write numbers and dot to display
@@ -19,5 +20,10 @@ export function handleKeyEvent(state, key) {
   // clear display and memory
   if (key === 'Escape') {
     return clearAll();
+  }
+
+  // modify last number in display
+  if (key === '±' || key === '%') {
+    return modifyInput(state, key);
   }
 }
