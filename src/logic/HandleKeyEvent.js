@@ -2,6 +2,7 @@ import { writeNumber, writeOperationType, writeResult, clearAll, removeLastItem 
 import { modifyInput } from './Modifyers';
 
 export function handleKeyEvent(state, key) {
+  if (key===' ' || key==='' || key==='Spacebar') return ;
   // write numbers and dot to display
   if ((/^[0-9.]+$/).test(key)) {
     return writeNumber(state, key);

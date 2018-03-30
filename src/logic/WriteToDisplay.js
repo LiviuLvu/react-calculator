@@ -22,16 +22,16 @@ export function writeNumber(state, number) {
 // add dot to display
 export function writeDot(state) {
   let {displayValue, waitingForNumber} = state;
-  let stringArray = String(displayValue).split(' ');
-  let ifNumberHasDot = stringArray[stringArray.length - 1];
 
-  if ((/\./g).test(ifNumberHasDot)) {
-    return {}
+  if ((/\.$|\. $/g).test(displayValue)) {
+    return;
   }
   if (waitingForNumber) {
     displayValue = displayValue + '0';
   }
-  
+  if (!displayValue) {
+    displayValue = '0';
+  }
   return {
     displayValue: displayValue + '.',
     wasExpressionEvaluated: false,
@@ -43,13 +43,11 @@ export function writeDot(state) {
 // add operators to displayValue
 export function writeOperationType(state, operator) {
   let {displayValue, waitingForNumber} = state;
-  
-  if (waitingForNumber) {
-    let stringArray = displayValue.split(' ');
-    let removeLastOperator =  stringArray.slice(0, stringArray.length - 2);
-    displayValue = removeLastOperator.join(' ');
+  const endsWithOperator = /[+\-*\/] ?$/g;
+  if (!displayValue) return;
+  if (endsWithOperator.test(displayValue)) {
+    displayValue = displayValue.slice(0, -2);
   }
-  
   return {
     displayValue: displayValue + ' ' + operator + ' ',
     waitingForNumber: true,
@@ -60,10 +58,11 @@ export function writeOperationType(state, operator) {
 
 // calculate display value
 export function writeResult(state) {
-  let {displayValue, waitingForNumber} = state;
-  if (waitingForNumber) {
-    // eval breaks if string ends with operation character
-    displayValue = displayValue.slice(0, displayValue.length - 2);
+  let {displayValue} = state;
+
+  const endsWithOperator = /[+\-*\/] ?$/g;
+  if (endsWithOperator.test(displayValue)) {
+    displayValue = displayValue.slice(0, -2);
   }
   return {
     displayValue: eval(displayValue),
@@ -85,7 +84,8 @@ export function clearAll() {
 // remove last character from display
 export function removeLastItem(state) {
   let {displayValue, waitingForNumber} = state;
-  let lastItemRemoved = displayValue.slice(0, -1);
+  if (!displayValue) return {};
+  let lastItemRemoved = String(displayValue).slice(0, -1);
   return {
     displayValue: lastItemRemoved,
     waitingForNumber: false

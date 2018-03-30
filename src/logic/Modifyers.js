@@ -1,5 +1,5 @@
 function removeOperatorAndTrimLastNumber(modified, displayValue, waitingForNumber) {
-  let stringArray = displayValue.split(' ');
+  let stringArray = String(displayValue).split(' ');
   if(waitingForNumber) {stringArray = stringArray.slice(0, stringArray.length - 2)}
   return {
     lastNumber: stringArray.slice(-1),
