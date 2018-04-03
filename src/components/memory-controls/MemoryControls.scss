@@ -1,0 +1,10 @@
+.grid-memory-control {
+  grid-template-rows: auto auto auto 101px;
+  display: grid;
+  grid-column: 1;
+  grid-gap: 1px;
+  border-right: 1px solid orange;
+  .grid-item {
+    height: initial;
+  }
+}

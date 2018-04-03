@@ -24,7 +24,7 @@ export default class MainControls extends Component {
 
   render(){
     return(
-      <div className="grid-container">
+      <div className="grid-main-control">
           <Button name="AC" clickHandler={this.handleAllClear} secondary />
           <Button name="±" clickHandler={this.handleModifyInput} secondary />
           <Button name="%" clickHandler={this.handleModifyInput} secondary />

@@ -3,6 +3,7 @@ import'./CalculatorApp.css';
 
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
+import MemoryControls from './components/memory-controls/MemoryControls';
 import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 import { modifyInput } from './logic/Modifyers';
@@ -67,13 +68,17 @@ class CalculatorApp extends Component {
     return (
       <div className="calculator-app">
         <Display value={this.state.displayValue} />
-        <MainControls
-          handleNumberInput={this.handleNumberInput}
-          handleDotInput={this.handleDotInput}
-          handleOperationInput={this.handleOperationInput}
-          handleModifyInput={this.handleModifyInput}
-          handleAllClear={this.handleAllClear}
-          handleResultOutput={this.handleResultOutput} />
+        <div className="grid-container">
+          <MemoryControls
+            handleModifyInput={this.handleModifyInput} />
+          <MainControls
+            handleNumberInput={this.handleNumberInput}
+            handleDotInput={this.handleDotInput}
+            handleOperationInput={this.handleOperationInput}
+            handleModifyInput={this.handleModifyInput}
+            handleAllClear={this.handleAllClear}
+            handleResultOutput={this.handleResultOutput} />
+        </div>
       </div>
     );
   }

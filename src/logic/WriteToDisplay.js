@@ -90,13 +90,13 @@ export function clearAll() {
 
 
 // remove last character from display
-export function removeLastItem(state) {
-  let {displayValue, waitingForNumber} = state;
-  if (!displayValue) return {};
-  let lastItemRemoved = String(displayValue).slice(0, -1);
-  if (!lastItemRemoved) lastItemRemoved = '0'; 
-  return {
-    displayValue: lastItemRemoved,
-    waitingForNumber: false
-  }
-}
+// export function removeLastItem(displayValue, numberMemory) {
+//   const currentItem = numberMemory.length - 1;
+//   const currentItemString = numberMemory[currentItem];
+//   numberMemory[currentItem] = currentItemString.substr(0, currentItemString.length - 1);
+//   console.log(numberMemory)
+//   return {
+//     displayValue: numberMemory[currentItem],
+//     numberMemory: numberMemory
+//   }
+// }

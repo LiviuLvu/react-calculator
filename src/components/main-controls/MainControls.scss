@@ -1,5 +1,6 @@
-.grid-container {
+.grid-main-control {
   display: grid;
+  grid-column: 2 / span 4;
   grid-template-columns: auto auto auto auto;
   grid-gap: 1px;
   background-color: #999999;

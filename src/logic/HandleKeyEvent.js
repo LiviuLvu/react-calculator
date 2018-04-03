@@ -2,20 +2,19 @@ import { writeNumber, writeOperationType, writeResult, clearAll, removeLastItem 
 import { modifyInput } from './Modifyers';
 
 export function handleKeyEvent(state, key) {
-  if (key===' ' || key==='' || key==='Spacebar') return ;
   // write numbers and dot to display
   if ((/^[0-9.]+$/).test(key)) {
-    return writeNumber(state, key);
+    return writeNumber(state.displayValue, state.writeNewNumber, state.numberMemory, key)
   }
 
   // write operator
   if ((/^[+\-*/]+$/).test(key)) {
-    return writeOperationType(state, key);
+    return writeOperationType(state.writeNewNumber, state.operatorMemory, key);
   }
 
   // calculate total
   if (key === 'Enter') {
-    return writeResult(state);
+    return writeResult(state.displayValue, state.writeNewNumber, state.numberMemory, state.operatorMemory);
   }
 
   // clear display and memory
@@ -24,9 +23,9 @@ export function handleKeyEvent(state, key) {
   }
 
   // clear last character
-  if (key === 'Backspace') {
-    return removeLastItem(state);
-  }
+  // if (key === 'Backspace') {
+  //   return removeLastItem(state.displayValue, state.numberMemory);
+  // }
 
   // modify last number in display
   if (key === '±' || key === '%') {
