@@ -1,41 +1,39 @@
-// add numbers to displayValue
-export function writeNumber(state, number) {
-  let {displayValue, wasExpressionEvaluated} = state;
+// update display using memory array
+export function writeNumber(displayValue, newMemoryNumber, numbersMemory, numberInput) {
+  let currentIndex = numbersMemory.length-1;
 
-  if (wasExpressionEvaluated) {
-    displayValue = ''
-  }
-  if (String(displayValue) === '0') {
-    return {
-      displayValue: number,
-    };
-  }
+  newMemoryNumber ? writeNewNumber() : editNumber();
+  
+  function writeNewNumber() {
+    console.log(numbersMemory);
+    numbersMemory.push(numberInput);
+  };
+
+  function editNumber() {
+    if ( numbersMemory.length < 2 && numbersMemory[0]==='0') {
+      numbersMemory[currentIndex] = numberInput;
+    } else {
+      numbersMemory[currentIndex] += String(numberInput);
+    }
+  };
 
   return {
-    displayValue: displayValue + number,
-    waitingForNumber: false,
-    wasExpressionEvaluated: false
+    displayValue: numbersMemory[currentIndex],
+    numbersMemory: numbersMemory,
+    newMemoryNumber: false
   }
+
 }
 
 
 // add dot to display
-export function writeDot(state) {
-  let {displayValue, waitingForNumber} = state;
+export function writeDot(displayValue) {
   const hasDot = /\.$|\. $/g;
   if (hasDot.test(displayValue)) {
     return;
   }
-  if (waitingForNumber) {
-    displayValue = displayValue + '0';
-  }
-  if (!displayValue) {
-    displayValue = '0';
-  }
   return {
     displayValue: displayValue + '.',
-    wasExpressionEvaluated: false,
-    waitingForNumber: false
   };
 }
 
