@@ -39,7 +39,7 @@ class CalculatorApp extends Component {
   }
   handleDotInput = () => {
     this.setState(
-      writeDot(this.state.displayValue)
+      writeDot(this.state.numbersMemory)
     );
   }
   handleOperationInput = (buttonName) => {

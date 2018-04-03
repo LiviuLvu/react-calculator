@@ -2,14 +2,14 @@
 export function writeNumber(displayValue, newMemoryNumber, numbersMemory, numberInput) {
   let currentIndex = numbersMemory.length-1;
 
-  newMemoryNumber ? writeNewNumber() : editNumber();
+  newMemoryNumber ? writeNewNumber() : editCurrentNumber();
   
   function writeNewNumber() {
     console.log(numbersMemory);
     numbersMemory.push(numberInput);
   };
 
-  function editNumber() {
+  function editCurrentNumber() {
     if ( numbersMemory.length < 2 && numbersMemory[0]==='0') {
       numbersMemory[currentIndex] = numberInput;
     } else {
@@ -22,18 +22,22 @@ export function writeNumber(displayValue, newMemoryNumber, numbersMemory, number
     numbersMemory: numbersMemory,
     newMemoryNumber: false
   }
-
 }
 
 
 // add dot to display
-export function writeDot(displayValue) {
-  const hasDot = /\.$|\. $/g;
-  if (hasDot.test(displayValue)) {
+export function writeDot(numbersMemory) {
+  let currentIndex = numbersMemory.length - 1;
+  const hasDot = /\./g;
+  if (hasDot.test(numbersMemory[currentIndex])) {
     return;
   }
+  numbersMemory[currentIndex] = numbersMemory[currentIndex] += '.'
+  
   return {
-    displayValue: displayValue + '.',
+    displayValue: numbersMemory,
+    numbersMemory: numbersMemory,
+    newMemoryNumber: false
   };
 }
 
