@@ -13,7 +13,7 @@ class CalculatorApp extends Component {
     this.state = {
       displayValue: 0,
       newMemoryNumber: false,
-      numbersMemory: ['0'],
+      numberMemory: ['0'],
       operators: ['']
     }
   }
@@ -34,12 +34,12 @@ class CalculatorApp extends Component {
 
   handleNumberInput = (buttonName) => {
     this.setState(
-      writeNumber(this.state.displayValue, this.state.newMemoryNumber, this.state.numbersMemory, buttonName)
+      writeNumber(this.state.displayValue, this.state.newMemoryNumber, this.state.numberMemory, buttonName)
     );
   }
   handleDotInput = () => {
     this.setState(
-      writeDot(this.state.numbersMemory)
+      writeDot(this.state.numberMemory)
     );
   }
   handleOperationInput = (buttonName) => {

@@ -1,42 +1,42 @@
 // update display using memory array
-export function writeNumber(displayValue, newMemoryNumber, numbersMemory, numberInput) {
-  let currentIndex = numbersMemory.length-1;
+export function writeNumber(displayValue, newMemoryNumber, numberMemory, numberInput) {
+  let currentIndex = numberMemory.length-1;
 
   newMemoryNumber ? writeNewNumber() : editCurrentNumber();
   
   function writeNewNumber() {
-    console.log(numbersMemory);
-    numbersMemory.push(numberInput);
+    console.log(numberMemory);
+    numberMemory.push(numberInput);
   };
 
   function editCurrentNumber() {
-    if ( numbersMemory.length < 2 && numbersMemory[0]==='0') {
-      numbersMemory[currentIndex] = numberInput;
+    if ( numberMemory.length < 2 && numberMemory[0]==='0') {
+      numberMemory[currentIndex] = numberInput;
     } else {
-      numbersMemory[currentIndex] += String(numberInput);
+      numberMemory[currentIndex] += String(numberInput);
     }
   };
 
   return {
-    displayValue: numbersMemory[currentIndex],
-    numbersMemory: numbersMemory,
+    displayValue: numberMemory[currentIndex],
+    numberMemory: numberMemory,
     newMemoryNumber: false
   }
 }
 
 
 // add dot to display
-export function writeDot(numbersMemory) {
-  let currentIndex = numbersMemory.length - 1;
+export function writeDot(numberMemory) {
+  let currentIndex = numberMemory.length - 1;
   const hasDot = /\./g;
-  if (hasDot.test(numbersMemory[currentIndex])) {
+  if (hasDot.test(numberMemory[currentIndex])) {
     return;
   }
-  numbersMemory[currentIndex] = numbersMemory[currentIndex] += '.'
-  
+  numberMemory[currentIndex] = numberMemory[currentIndex] += '.'
+
   return {
-    displayValue: numbersMemory,
-    numbersMemory: numbersMemory,
+    displayValue: numberMemory,
+    numberMemory: numberMemory,
     newMemoryNumber: false
   };
 }
