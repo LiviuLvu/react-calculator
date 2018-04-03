@@ -1,4 +1,11 @@
-// update display using memory array
+const operation = {
+  '/': (prevValue, nextValue) => prevValue / nextValue,
+  '*': (prevValue, nextValue) => prevValue * nextValue,
+  '+': (prevValue, nextValue) => prevValue + nextValue,
+  '-': (prevValue, nextValue) => prevValue - nextValue
+}
+
+// add numbers to memory and update display
 export function writeNumber(displayValue, writeNewNumber, numberMemory, numberInput) {
   let currentIndex = numberMemory.length-1;
 
@@ -24,7 +31,7 @@ export function writeNumber(displayValue, writeNewNumber, numberMemory, numberIn
 }
 
 
-// add dot to display
+// add dot to number and update display
 export function writeDot(numberMemory) {
   let currentIndex = numberMemory.length - 1;
   const hasDot = /\./g;
@@ -41,32 +48,32 @@ export function writeDot(numberMemory) {
 }
 
 
-// add operators to displayValue
-export function writeOperationType(writeNewNumber, operatorsMemory, operator) {
-  let currentOperator = operatorsMemory.length - 1;
+// add operators to memory
+export function writeOperationType(writeNewNumber, operatorMemory, operator) {
+  let currentOperator = operatorMemory.length - 1;
   !writeNewNumber ?
-    operatorsMemory.push(operator) :
-    operatorsMemory[currentOperator] = operator;
+    operatorMemory.push(operator) :
+    operatorMemory[currentOperator] = operator;
 
   return {
     writeNewNumber: true,
-    operatorsMemory: operatorsMemory
+    operatorMemory: operatorMemory
   }
 }
  
 
-// calculate display value
-export function writeResult(state) {
-  let {displayValue} = state;
+// calculate and display total
+export function writeResult(displayValue, writeNewNumber, numberMemory, operatorMemory) {
+  let total = numberMemory.reduce((prevNumber, nextNumber, currentIndex) => {
+    let operator = operatorMemory[currentIndex -1];
+    return operation[operator](+prevNumber, +nextNumber);
+  });
 
-  const endsWithOperator = /[+\-*\/] ?$/g;
-  if (endsWithOperator.test(displayValue)) {
-    displayValue = displayValue.slice(0, -2);
-  }
   return {
-    displayValue: eval(displayValue),
-    waitingForNumber: false,
-    wasExpressionEvaluated: true
+    displayValue: total,
+    writeNewNumber: false,
+    numberMemory: ['0'],
+    operatorMemory: []
   }
 }
 
