@@ -82,7 +82,9 @@ export function writeResult(displayValue, writeNewNumber, numberMemory, operator
 export function clearAll() {
   return {
     displayValue: '0',
-    waitingForNumber: false
+    writeNewNumber: false,
+    numberMemory: ['0'],
+    operatorMemory: []
   }
 }
 
