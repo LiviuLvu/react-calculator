@@ -1,15 +1,14 @@
 // update display using memory array
-export function writeNumber(displayValue, newMemoryNumber, numberMemory, numberInput) {
+export function writeNumber(displayValue, writeNewNumber, numberMemory, numberInput) {
   let currentIndex = numberMemory.length-1;
 
-  newMemoryNumber ? writeNewNumber() : editCurrentNumber();
+  writeNewNumber ? writeNew() : editCurrent();
   
-  function writeNewNumber() {
-    console.log(numberMemory);
+  function writeNew() {
     numberMemory.push(numberInput);
   };
 
-  function editCurrentNumber() {
+  function editCurrent() {
     if ( numberMemory.length < 2 && numberMemory[0]==='0') {
       numberMemory[currentIndex] = numberInput;
     } else {
@@ -20,7 +19,7 @@ export function writeNumber(displayValue, newMemoryNumber, numberMemory, numberI
   return {
     displayValue: numberMemory[currentIndex],
     numberMemory: numberMemory,
-    newMemoryNumber: false
+    writeNewNumber: false
   }
 }
 
@@ -37,23 +36,21 @@ export function writeDot(numberMemory) {
   return {
     displayValue: numberMemory,
     numberMemory: numberMemory,
-    newMemoryNumber: false
+    writeNewNumber: false
   };
 }
 
 
 // add operators to displayValue
-export function writeOperationType(state, operator) {
-  let {displayValue, waitingForNumber} = state;
-  const endsWithOperator = /[+\-*\/] ?$/g;
-  if (!displayValue) return;
-  if (endsWithOperator.test(displayValue)) {
-    displayValue = displayValue.slice(0, -2);
-  }
+export function writeOperationType(writeNewNumber, operatorsMemory, operator) {
+  let currentOperator = operatorsMemory.length - 1;
+  !writeNewNumber ?
+    operatorsMemory.push(operator) :
+    operatorsMemory[currentOperator] = operator;
+
   return {
-    displayValue: displayValue + ' ' + operator + ' ',
-    waitingForNumber: true,
-    wasExpressionEvaluated: false
+    writeNewNumber: true,
+    operatorsMemory: operatorsMemory
   }
 }
  
