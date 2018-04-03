@@ -1,35 +1,15 @@
-function removeOperatorAndTrimLastNumber(modified, displayValue, waitingForNumber) {
-  let stringArray = String(displayValue).split(' ');
-  if(waitingForNumber) {stringArray = stringArray.slice(0, stringArray.length - 2)}
-  return {
-    lastNumber: stringArray.slice(-1),
-    trimDisplayValue: stringArray.slice(0, stringArray.length - 1).join(' ')
-  }
-}
-
 // modify last displayed number
-export function modifyInput(state, modifier) {
-  let {displayValue, waitingForNumber} = state;
-  let modified = {
-    lastNumber: displayValue, 
-    trimDisplayValue: ''
-  }
-
-  if ((/[-*+\/]/g).test(displayValue)) {
-    modified = removeOperatorAndTrimLastNumber(modified, displayValue, waitingForNumber);
-  }
+export function modifyInput(displayValue, numberMemory, modifier) {
+  const currentIndex = numberMemory.length - 1;
+  
   if (modifier === '%') {
-    const percentage = modified.lastNumber / 100;
-    return {
-      displayValue: modified.trimDisplayValue + ' ' + percentage,
-      waitingForNumber: false
-    }
+    numberMemory[currentIndex] = +numberMemory[currentIndex] / 100;
   }
   if (modifier === '±') {
-    const togglePolarity = parseFloat(modified.lastNumber) * -1;
-    return {
-      displayValue: modified.trimDisplayValue + ' ' + togglePolarity,
-      waitingForNumber: false
-    }
+    numberMemory[currentIndex] = +numberMemory[currentIndex] * -1;
+  }
+  return {
+    displayValue: numberMemory[currentIndex],
+    numberMemory: numberMemory
   }
 }

@@ -49,7 +49,7 @@ class CalculatorApp extends Component {
   }
   handleModifyInput = (buttonName) => {
     this.setState(
-      modifyInput(this.state, buttonName)
+      modifyInput(this.state.displayValue, this.state.numberMemory, buttonName)
     )
   }
   handleAllClear = () => {

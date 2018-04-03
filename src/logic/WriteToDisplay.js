@@ -7,7 +7,7 @@ const operation = {
 
 // add numbers to memory and update display
 export function writeNumber(displayValue, writeNewNumber, numberMemory, numberInput) {
-  let currentIndex = numberMemory.length-1;
+  const currentIndex = numberMemory.length-1;
 
   writeNewNumber ? writeNew() : editCurrent();
   
@@ -33,7 +33,7 @@ export function writeNumber(displayValue, writeNewNumber, numberMemory, numberIn
 
 // add dot to number and update display
 export function writeDot(numberMemory) {
-  let currentIndex = numberMemory.length - 1;
+  const currentIndex = numberMemory.length - 1;
   const hasDot = /\./g;
   if (hasDot.test(numberMemory[currentIndex])) {
     return;
