@@ -1,5 +1,8 @@
 export function memoryClear() {
-  console.log('clear')
+
+  return {
+    memory: 0
+  }
 }
 export function memoryAdd(numberArray, memory) {  
   const currentNumber = +numberArray[numberArray.length - 1];
