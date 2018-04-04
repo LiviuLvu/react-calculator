@@ -6,43 +6,43 @@ const operation = {
 }
 
 // add numbers to memory and update display
-export function writeNumber(displayValue, writeNewNumber, numberMemory, numberInput) {
-  const currentIndex = numberMemory.length-1;
+export function writeNumber(displayValue, writeNewNumber, numberArray, numberInput) {
+  const currentIndex = numberArray.length-1;
 
   writeNewNumber ? writeNew() : editCurrent();
   
   function writeNew() {
-    numberMemory.push(numberInput);
+    numberArray.push(numberInput);
   };
 
   function editCurrent() {
-    if ( numberMemory.length < 2 && numberMemory[0]==='0') {
-      numberMemory[currentIndex] = numberInput;
+    if ( numberArray.length < 2 && numberArray[0]==='0') {
+      numberArray[currentIndex] = numberInput;
     } else {
-      numberMemory[currentIndex] += String(numberInput);
+      numberArray[currentIndex] += String(numberInput);
     }
   };
 
   return {
-    displayValue: numberMemory[currentIndex],
-    numberMemory: numberMemory,
+    displayValue: numberArray[currentIndex],
+    numberArray: numberArray,
     writeNewNumber: false
   }
 }
 
 
 // add dot to number and update display
-export function writeDot(numberMemory) {
-  const currentIndex = numberMemory.length - 1;
+export function writeDot(numberArray) {
+  const currentIndex = numberArray.length - 1;
   const hasDot = /\./g;
-  if (hasDot.test(numberMemory[currentIndex])) {
+  if (hasDot.test(numberArray[currentIndex])) {
     return;
   }
-  numberMemory[currentIndex] = numberMemory[currentIndex] += '.'
+  numberArray[currentIndex] = numberArray[currentIndex] += '.'
 
   return {
-    displayValue: numberMemory,
-    numberMemory: numberMemory,
+    displayValue: numberArray,
+    numberArray: numberArray,
     writeNewNumber: false
   };
 }
@@ -63,8 +63,8 @@ export function writeOperationType(writeNewNumber, operatorMemory, operator) {
  
 
 // calculate and display total
-export function writeResult(displayValue, writeNewNumber, numberMemory, operatorMemory) {
-  let total = numberMemory.reduce((prevNumber, nextNumber, currentIndex) => {
+export function writeResult(displayValue, writeNewNumber, numberArray, operatorMemory) {
+  let total = numberArray.reduce((prevNumber, nextNumber, currentIndex) => {
     let operator = operatorMemory[currentIndex -1];
     return operation[operator](+prevNumber, +nextNumber);
   });
@@ -72,7 +72,7 @@ export function writeResult(displayValue, writeNewNumber, numberMemory, operator
   return {
     displayValue: total,
     writeNewNumber: false,
-    numberMemory: ['0'],
+    numberArray: ['0'],
     operatorMemory: []
   }
 }
@@ -83,20 +83,20 @@ export function clearAll() {
   return {
     displayValue: '0',
     writeNewNumber: false,
-    numberMemory: ['0'],
+    numberArray: ['0'],
     operatorMemory: []
   }
 }
 
 
 // remove last character from display
-// export function removeLastItem(displayValue, numberMemory) {
-//   const currentItem = numberMemory.length - 1;
-//   const currentItemString = numberMemory[currentItem];
-//   numberMemory[currentItem] = currentItemString.substr(0, currentItemString.length - 1);
-//   console.log(numberMemory)
+// export function removeLastItem(displayValue, numberArray) {
+//   const currentItem = numberArray.length - 1;
+//   const currentItemString = numberArray[currentItem];
+//   numberArray[currentItem] = currentItemString.substr(0, currentItemString.length - 1);
+//   console.log(numberArray)
 //   return {
-//     displayValue: numberMemory[currentItem],
-//     numberMemory: numberMemory
+//     displayValue: numberArray[currentItem],
+//     numberArray: numberArray
 //   }
 // }

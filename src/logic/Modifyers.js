@@ -1,15 +1,15 @@
 // modify last displayed number
-export function modifyInput(displayValue, numberMemory, modifier) {
-  const currentIndex = numberMemory.length - 1;
+export function modifyInput(displayValue, numberArray, modifier) {
+  const currentIndex = numberArray.length - 1;
   
   if (modifier === '%') {
-    numberMemory[currentIndex] = +numberMemory[currentIndex] / 100;
+    numberArray[currentIndex] = +numberArray[currentIndex] / 100;
   }
   if (modifier === '±') {
-    numberMemory[currentIndex] = +numberMemory[currentIndex] * -1;
+    numberArray[currentIndex] = +numberArray[currentIndex] * -1;
   }
   return {
-    displayValue: numberMemory[currentIndex],
-    numberMemory: numberMemory
+    displayValue: numberArray[currentIndex],
+    numberArray: numberArray
   }
 }

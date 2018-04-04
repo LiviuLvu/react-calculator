@@ -4,7 +4,7 @@ import { modifyInput } from './Modifyers';
 export function handleKeyEvent(state, key) {
   // write numbers and dot to display
   if ((/^[0-9.]+$/).test(key)) {
-    return writeNumber(state.displayValue, state.writeNewNumber, state.numberMemory, key)
+    return writeNumber(state.displayValue, state.writeNewNumber, state.numberArray, key)
   }
 
   // write operator
@@ -14,7 +14,7 @@ export function handleKeyEvent(state, key) {
 
   // calculate total
   if (key === 'Enter') {
-    return writeResult(state.displayValue, state.writeNewNumber, state.numberMemory, state.operatorMemory);
+    return writeResult(state.displayValue, state.writeNewNumber, state.numberArray, state.operatorMemory);
   }
 
   // clear display and memory
@@ -24,7 +24,7 @@ export function handleKeyEvent(state, key) {
 
   // clear last character
   // if (key === 'Backspace') {
-  //   return removeLastItem(state.displayValue, state.numberMemory);
+  //   return removeLastItem(state.displayValue, state.numberArray);
   // }
 
   // modify last number in display
