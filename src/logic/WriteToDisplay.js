@@ -7,12 +7,13 @@ const operation = {
 
 // add numbers to memory and update display
 export function writeNumber(displayValue, writeNewNumber, numberArray, numberInput) {
-  const currentIndex = numberArray.length-1;
+  let currentIndex = numberArray.length-1;
 
   writeNewNumber ? writeNew() : editCurrent();
   
   function writeNew() {
     numberArray.push(numberInput);
+    currentIndex = numberArray.length-1;
   };
 
   function editCurrent() {
@@ -22,7 +23,7 @@ export function writeNumber(displayValue, writeNewNumber, numberArray, numberInp
       numberArray[currentIndex] += String(numberInput);
     }
   };
-
+  
   return {
     displayValue: numberArray[currentIndex],
     numberArray: numberArray,
