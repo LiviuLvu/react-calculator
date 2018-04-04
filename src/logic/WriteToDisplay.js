@@ -73,7 +73,7 @@ export function writeResult(displayValue, writeNewNumber, numberArray, operatorA
   return {
     displayValue: total,
     writeNewNumber: false,
-    numberArray: ['0'],
+    numberArray: [String(total)],
     operatorArray: []
   }
 }
