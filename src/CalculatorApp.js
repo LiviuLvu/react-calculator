@@ -8,6 +8,7 @@ import ButtonScientific from './components/button-scientific/ButtonScientific'
 import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 import { modifyInput } from './logic/Modifyers';
+import { memoryClear, memoryAdd, memorySubtract, memoryRecall } from './logic/Memory'
 
 class CalculatorApp extends Component {
   constructor (props) {
@@ -69,14 +70,40 @@ class CalculatorApp extends Component {
       isScientific: !this.state.isScientific
     });
   }
-  
+  handleMemClear = () => {
+    this.setState(
+      memoryClear()
+    )
+  }
+  handleMemAdd = () => {
+    this.setState(
+      memoryAdd()
+    )
+  }
+  handleMemSubtract = () => {
+    this.setState(
+      memorySubtract()
+    )
+  }
+  handleMemRecall = () => {
+    this.setState(
+      memoryRecall()
+    )
+  }
+
+
   render() {
     return (
       <div className="calculator-app">
         <ButtonScientific clickHandler={this.isScientificVisible} />
         <Display value={this.state.displayValue} />
         <div className="grid-container">
-          {this.state.isScientific ? <MemoryControls handleModifyInput={this.handleModifyInput} /> : ''}
+          {this.state.isScientific ? 
+            <MemoryControls
+              handleMemClear={this.handleMemClear}
+              handleMemAdd={this.handleMemAdd}
+              handleMemSubtract={this.handleMemSubtract}
+              handleMemRecall={this.handleMemRecall} /> : ''}
           <MainControls
             handleNumberInput={this.handleNumberInput}
             handleDotInput={this.handleDotInput}
