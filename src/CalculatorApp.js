@@ -17,7 +17,7 @@ class CalculatorApp extends Component {
       writeNewNumber: false,
       numberMemory: ['0'],
       operatorMemory: [],
-      scientific: false
+      isScientific: false
     }
   }
 
@@ -26,11 +26,9 @@ class CalculatorApp extends Component {
       handleKeyEvent(this.state, $event.key)
     );
   };
-
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeyEvent);
   }
-  
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyEvent);
   }
@@ -65,17 +63,21 @@ class CalculatorApp extends Component {
       writeResult(this.state.displayValue, this.state.writeNewNumber, this.state.numberMemory, this.state.operatorMemory)
     )
   }
+
+  isScientificVisible = () => {
+    this.setState({
+      isScientific: !this.state.isScientific
+    });
+  }
   
   render() {
     return (
       <div className="calculator-app">
-        <ButtonScientific />
+        <ButtonScientific clickHandler={this.isScientificVisible} />
         <Display value={this.state.displayValue} />
         <div className="grid-container">
-          <MemoryControls
-            handleModifyInput={this.handleModifyInput} />
+          {this.state.isScientific ? <MemoryControls handleModifyInput={this.handleModifyInput} /> : ''}
           <MainControls
-            // style={onHideToggle()}
             handleNumberInput={this.handleNumberInput}
             handleDotInput={this.handleDotInput}
             handleOperationInput={this.handleOperationInput}

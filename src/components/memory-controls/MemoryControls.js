@@ -4,7 +4,7 @@ import Button from '../button/Button'
 
 export default class MemoryControls extends Component {  
   handleModifyInput = (buttonName) => {
-    this.props.handleModifyInput(buttonName);
+    // this.props.modifyInput(buttonName);
   }
 
   render(){
