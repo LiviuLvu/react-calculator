@@ -18,10 +18,11 @@ class CalculatorApp extends Component {
       writeNewNumber: false,
       numberArray: ['0'],
       operatorArray: [],
-      isScientific: false
+      isScientific: false,
+      memory: 0
     }
   }
-
+  
   handleKeyEvent = ($event) => {
     this.setState(
       handleKeyEvent(this.state, $event.key)
@@ -34,6 +35,7 @@ class CalculatorApp extends Component {
     document.removeEventListener('keydown', this.handleKeyEvent);
   }
 
+  // regular calculator operations
   handleNumberInput = (buttonName) => {
     this.setState(
       writeNumber(this.state.displayValue, this.state.writeNewNumber, this.state.numberArray, buttonName)
@@ -65,6 +67,7 @@ class CalculatorApp extends Component {
     )
   }
 
+  // scientific operations 
   isScientificVisible = () => {
     this.setState({
       isScientific: !this.state.isScientific
@@ -72,22 +75,22 @@ class CalculatorApp extends Component {
   }
   handleMemClear = () => {
     this.setState(
-      memoryClear()
+      memoryClear(this.state.memory)
     )
   }
   handleMemAdd = () => {
     this.setState(
-      memoryAdd()
+      memoryAdd(this.state.numberArray, this.state.memory)
     )
   }
   handleMemSubtract = () => {
     this.setState(
-      memorySubtract()
+      memorySubtract(this.state.numberArray, this.state.memory)
     )
   }
   handleMemRecall = () => {
     this.setState(
-      memoryRecall()
+      memoryRecall(this.state.displayValue, this.state.numberArray, this.state.memory)
     )
   }
 
