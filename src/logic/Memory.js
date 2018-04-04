@@ -22,13 +22,12 @@ export function memorySubtract(numberArray, memory) {
   }
 }
 export function memoryRecall(displayValue, writeNewNumber, numberArray, memory) {
-  let updatedNumbers;
-  if (numberArray.length < 2 && numberArray[0]==='0') updatedNumbers = numberArray 
-  else updatedNumbers = numberArray.push(String(memory))
+  let updatedNumbers = numberArray;
+  updatedNumbers[updatedNumbers.length - 1] = memory;
 
   return {
     displayValue: memory,
-    numberArray: updatedNumbers,
-    writeNewNumber: false
+    writeNewNumber: false,
+    numberArray: updatedNumbers
   }
 }
