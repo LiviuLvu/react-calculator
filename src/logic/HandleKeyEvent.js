@@ -9,12 +9,12 @@ export function handleKeyEvent(state, key) {
 
   // write operator
   if ((/^[+\-*/]+$/).test(key)) {
-    return writeOperationType(state.writeNewNumber, state.operatorMemory, key);
+    return writeOperationType(state.writeNewNumber, state.operatorArray, key);
   }
 
   // calculate total
   if (key === 'Enter') {
-    return writeResult(state.displayValue, state.writeNewNumber, state.numberArray, state.operatorMemory);
+    return writeResult(state.displayValue, state.writeNewNumber, state.numberArray, state.operatorArray);
   }
 
   // clear display and memory

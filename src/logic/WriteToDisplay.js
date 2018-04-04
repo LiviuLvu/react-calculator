@@ -50,23 +50,23 @@ export function writeDot(numberArray) {
 
 
 // add operators to memory
-export function writeOperationType(writeNewNumber, operatorMemory, operator) {
-  let currentOperator = operatorMemory.length - 1;
+export function writeOperationType(writeNewNumber, operatorArray, operator) {
+  let currentOperator = operatorArray.length - 1;
   !writeNewNumber ?
-    operatorMemory.push(operator) :
-    operatorMemory[currentOperator] = operator;
+    operatorArray.push(operator) :
+    operatorArray[currentOperator] = operator;
 
   return {
     writeNewNumber: true,
-    operatorMemory: operatorMemory
+    operatorArray: operatorArray
   }
 }
  
 
 // calculate and display total
-export function writeResult(displayValue, writeNewNumber, numberArray, operatorMemory) {
+export function writeResult(displayValue, writeNewNumber, numberArray, operatorArray) {
   let total = numberArray.reduce((prevNumber, nextNumber, currentIndex) => {
-    let operator = operatorMemory[currentIndex -1];
+    let operator = operatorArray[currentIndex -1];
     return operation[operator](+prevNumber, +nextNumber);
   });
 
@@ -74,7 +74,7 @@ export function writeResult(displayValue, writeNewNumber, numberArray, operatorM
     displayValue: total,
     writeNewNumber: false,
     numberArray: ['0'],
-    operatorMemory: []
+    operatorArray: []
   }
 }
 
@@ -85,7 +85,7 @@ export function clearAll() {
     displayValue: '0',
     writeNewNumber: false,
     numberArray: ['0'],
-    operatorMemory: []
+    operatorArray: []
   }
 }
 
