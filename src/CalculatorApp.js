@@ -4,6 +4,7 @@ import'./CalculatorApp.css';
 import Display from './components/display/Display';
 import MainControls from './components/main-controls/MainControls';
 import MemoryControls from './components/memory-controls/MemoryControls';
+import ButtonScientific from './components/button-scientific/ButtonScientific'
 import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 import { modifyInput } from './logic/Modifyers';
@@ -15,7 +16,8 @@ class CalculatorApp extends Component {
       displayValue: 0,
       writeNewNumber: false,
       numberMemory: ['0'],
-      operatorMemory: []
+      operatorMemory: [],
+      scientific: false
     }
   }
 
@@ -67,11 +69,13 @@ class CalculatorApp extends Component {
   render() {
     return (
       <div className="calculator-app">
+        <ButtonScientific />
         <Display value={this.state.displayValue} />
         <div className="grid-container">
           <MemoryControls
             handleModifyInput={this.handleModifyInput} />
           <MainControls
+            // style={onHideToggle()}
             handleNumberInput={this.handleNumberInput}
             handleDotInput={this.handleDotInput}
             handleOperationInput={this.handleOperationInput}
