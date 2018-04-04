@@ -90,7 +90,7 @@ class CalculatorApp extends Component {
   }
   handleMemRecall = () => {
     this.setState(
-      memoryRecall(this.state.displayValue, this.state.numberArray, this.state.memory)
+      memoryRecall(this.state.displayValue, this.state.writeNewNumber, this.state.numberArray, this.state.memory)
     )
   }
 

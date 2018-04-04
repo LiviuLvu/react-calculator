@@ -1,5 +1,4 @@
 export function memoryClear() {
-
   return {
     memory: 0
   }
@@ -22,6 +21,10 @@ export function memorySubtract(numberArray, memory) {
     memory: updateMemory
   }
 }
-export function memoryRecall() {
-  console.log('recall')
+export function memoryRecall(displayValue, writeNewNumber, numberArray, memory) {
+  return {
+    displayValue: memory,
+    numberArray: numberArray.push(memory),
+    writeNewNumber: false
+  }
 }
