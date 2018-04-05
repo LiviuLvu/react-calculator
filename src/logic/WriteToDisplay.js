@@ -88,16 +88,3 @@ export function clearAll() {
     operatorArray: []
   }
 }
-
-
-// remove last character from display
-// export function removeLastItem(displayValue, numberArray) {
-//   const currentItem = numberArray.length - 1;
-//   const currentItemString = numberArray[currentItem];
-//   numberArray[currentItem] = currentItemString.substr(0, currentItemString.length - 1);
-//   console.log(numberArray)
-//   return {
-//     displayValue: numberArray[currentItem],
-//     numberArray: numberArray
-//   }
-// }

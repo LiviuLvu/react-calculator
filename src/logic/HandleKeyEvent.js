@@ -22,11 +22,6 @@ export function handleKeyEvent(state, key) {
     return clearAll();
   }
 
-  // clear last character
-  // if (key === 'Backspace') {
-  //   return removeLastItem(state.displayValue, state.numberArray);
-  // }
-
   // modify last number in display
   if (key === '±' || key === '%') {
     return modifyInput(state, key);
