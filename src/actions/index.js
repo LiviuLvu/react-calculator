@@ -1,9 +1,9 @@
 let nextNumberId = 0
 let nextOperatorId = 0
 
-export const displayValue = string => ({
+export const displayValue = stringNumber => ({
   type: 'SET_DISPLAY_VALUE',
-  string
+  stringNumber
 })
 
 export const writeNewNumber = state => ({
