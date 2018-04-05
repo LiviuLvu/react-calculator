@@ -106,7 +106,7 @@ class CalculatorApp extends Component {
               handleMemClear={this.handleMemClear}
               handleMemAdd={this.handleMemAdd}
               handleMemSubtract={this.handleMemSubtract}
-              handleMemRecall={this.handleMemRecall} /> : ''}
+              handleMemRecall={this.handleMemRecall} /> : null}
           <MainControls
             handleNumberInput={this.handleNumberInput}
             handleDotInput={this.handleDotInput}
