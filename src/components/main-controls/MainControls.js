@@ -3,6 +3,7 @@ import './MainControls.css';
 import Button from '../button/Button'
 
 const MainControls = ({ numberInput }) => {
+  
   const handleNumberInput = (number) => {
     numberInput(number);
   }

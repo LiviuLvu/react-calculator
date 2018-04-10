@@ -8,4 +8,4 @@ const mapStateToProps = (state) => ({
   displayValue: '0.0'
 });
 
-connect(mapStateToProps)(Display);
+export default connect(mapStateToProps)(Display);

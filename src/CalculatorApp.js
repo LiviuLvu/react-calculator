@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import'./CalculatorApp.css';
 
-import Display from './components/display/Display';
-import MainControls from './components/main-controls/MainControls';
+import DisplayContainer from './containers/DisplayContainer';
+import MainControlsContainer from './containers/MainControlsContainer';
 import MemoryControls from './components/memory-controls/MemoryControls';
 import ButtonScientific from './components/button-scientific/ButtonScientific'
 import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
@@ -99,7 +99,7 @@ class CalculatorApp extends Component {
     return (
       <div className="calculator-app">
         <ButtonScientific clickHandler={this.isScientificVisible} />
-        <Display value={this.state.displayValue} />
+        <DisplayContainer />
         <div className="grid-container">
           {this.state.isScientific ? 
             <MemoryControls
@@ -107,13 +107,7 @@ class CalculatorApp extends Component {
               handleMemAdd={this.handleMemAdd}
               handleMemSubtract={this.handleMemSubtract}
               handleMemRecall={this.handleMemRecall} /> : null}
-          <MainControls
-            handleNumberInput={this.handleNumberInput}
-            handleDotInput={this.handleDotInput}
-            handleOperationInput={this.handleOperationInput}
-            handleModifyInput={this.handleModifyInput}
-            handleAllClear={this.handleAllClear}
-            handleResultOutput={this.handleResultOutput} />
+          <MainControlsContainer />
         </div>
       </div>
     );
