@@ -4,12 +4,12 @@ export const displayValue = stringNumber => ({
 })
 
 export const shouldWriteNew = state => ({
-  type: 'TOGGLE_WRITE_NEW_NUMBER',
+  type: 'SHOULD_WRITE_NEW_NUMBER',
   state
 })
 
 export const addNumber = number => ({
-  type: 'ADD_NUMBER',
+  type: 'WRITE_NUMBER',
   number
 })
 
