@@ -1,25 +1,20 @@
-let nextNumberId = 0
-let nextOperatorId = 0
-
 export const displayValue = stringNumber => ({
   type: 'SET_DISPLAY_VALUE',
   stringNumber
 })
 
-export const writeNewNumber = state => ({
+export const shouldWriteNew = state => ({
   type: 'TOGGLE_WRITE_NEW_NUMBER',
   state
 })
 
 export const addNumber = number => ({
   type: 'ADD_NUMBER',
-  id: nextNumberId++,
   number
 })
 
 export const addOperator = number => ({
   type: 'ADD_OPERATOR',
-  id: nextOperatorId++,
   number
 })
 

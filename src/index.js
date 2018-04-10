@@ -1,8 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
 import './index.css';
 import CalculatorApp from './CalculatorApp';
 import registerServiceWorker from './registerServiceWorker';
+import rootReducer from './reducers';
 
-ReactDOM.render(<CalculatorApp />, document.getElementById('root'));
+const store = createStore(rootReducer);
+
+render(
+  <Provider store={store}>
+    <CalculatorApp />
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();

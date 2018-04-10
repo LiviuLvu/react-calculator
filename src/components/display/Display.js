@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Display.css';
 import AutoScalingText from './auto-scaling-text/AutoScalingText'
 
-export default class Display extends Component {
-  render(){
-    return(
-      <div className="input-container">
-          <AutoScalingText>{this.props.value}</AutoScalingText>
-      </div>
-    )
-  }
+const Display = ({ displayValue }) => {
+  // display value is undefinded. Why?
+  return(
+    <div className="input-container">
+        <AutoScalingText>{displayValue}</AutoScalingText>
+    </div>
+  )
 }
+
+export default Display;
