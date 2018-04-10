@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import Display from '../components/display/Display';
 
 const mapStateToProps = (state) => ({
-  // displayValue: state.numberArray,
-  // below displayValue does not reach the Display component. There it is undefined.
-  displayValue: '0.0'
+  displayValue: state.displayValue,
 });
 
 export default connect(mapStateToProps)(Display);

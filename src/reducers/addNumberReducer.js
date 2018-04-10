@@ -1,13 +1,11 @@
-export default function addNumberReducer(state = [], action) {
+export default function addNumberReducer(state = {}, action) {
   switch (action.type) {
     case 'ADD_NUMBER':
-      return [
-        ...state,
-        {
-          id: action.id,
-          number: action.number
-        }
-      ];
+      return Object.assign(
+        {}, 
+        state,
+        {numberArray: action.number}
+      );
     default:
       return state
   }
