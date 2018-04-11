@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
-import writeNumber from './writeNumberReducer';
-import displayValueReducer from './displayValueReducer';
+import writeNumberReducer from './writeNumberReducer';
 
 const rootReducer = combineReducers({
-  writeNumber,
-  displayValueReducer
+  writeNumberReducer
 });
 
 export default rootReducer;
