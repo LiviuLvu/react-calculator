@@ -5,7 +5,6 @@ import DisplayContainer from './containers/DisplayContainer';
 import MainControlsContainer from './containers/MainControlsContainer';
 import MemoryControls from './components/memory-controls/MemoryControls';
 import ButtonScientific from './components/button-scientific/ButtonScientific'
-import { writeNumber, writeDot, writeOperationType, writeResult, clearAll } from './logic/WriteToDisplay';
 import { handleKeyEvent } from './logic/HandleKeyEvent';
 import { modifyInput } from './logic/Modifyers';
 import { memoryClear, memoryAdd, memorySubtract, memoryRecall } from './logic/Memory'
@@ -33,38 +32,6 @@ class CalculatorApp extends Component {
   }
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeyEvent);
-  }
-
-  // regular calculator operations
-  handleNumberInput = (buttonName) => {
-    this.setState(
-      writeNumber(this.state.displayValue, this.state.writeNewNumber, this.state.numberArray, buttonName)
-    );
-  }
-  handleDotInput = () => {
-    this.setState(
-      writeDot(this.state.numberArray)
-    );
-  }
-  handleOperationInput = (buttonName) => {
-    this.setState(
-      writeOperationType(this.state.writeNewNumber, this.state.operatorArray, buttonName)
-    )
-  }
-  handleModifyInput = (buttonName) => {
-    this.setState(
-      modifyInput(this.state.displayValue, this.state.numberArray, buttonName)
-    )
-  }
-  handleAllClear = () => {
-    this.setState(
-      clearAll()
-    )
-  }
-  handleResultOutput = () => {
-    this.setState(
-      writeResult(this.state.displayValue, this.state.writeNewNumber, this.state.numberArray, this.state.operatorArray)
-    )
   }
 
   // scientific operations 

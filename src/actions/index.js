@@ -13,6 +13,11 @@ export const writeNumber = number => ({
   number
 })
 
+export const writeDot = dot => ({
+  type: 'WRITE_DOT',
+  dot
+})
+
 export const addOperator = number => ({
   type: 'ADD_OPERATOR',
   number

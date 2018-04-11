@@ -2,13 +2,13 @@ import React from 'react';
 import './MainControls.css';
 import Button from '../button/Button'
 
-const MainControls = ({ numberInput }) => {
+const MainControls = ({ numberInput, dotInput }) => {
   
   const handleNumberInput = (number) => {
     numberInput(number);
   }
-  const handleDotInput = (number) => {
-  
+  const handleDotInput = (dot) => {
+    dotInput(dot);
   }
   const handleOperationInput = (buttonName) => {
   
