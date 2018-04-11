@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { writeNumber, writeDot } from '../actions';
+import { displayValue, writeDot, memoryNumberAndOperator } from '../actions';
 import MainControls from '../components/main-controls/MainControls';
 
 const mapDispatchToProps = dispatch => ({
-  numberInput: number => dispatch(writeNumber(number)),
-  dotInput: dot => dispatch(writeDot(dot))
+  displayValue: stringNumber => dispatch(displayValue(stringNumber)),
+  dotInput: string => dispatch(writeDot(string)),
+  operatorInput: operator => dispatch(memoryNumberAndOperator(operator))
 })
 
 export default connect(null, mapDispatchToProps)(MainControls);

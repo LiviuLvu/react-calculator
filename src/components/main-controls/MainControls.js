@@ -2,16 +2,16 @@ import React from 'react';
 import './MainControls.css';
 import Button from '../button/Button'
 
-const MainControls = ({ numberInput, dotInput }) => {
+const MainControls = ({ displayValue, operatorInput, dotInput }) => {
   
-  const handleNumberInput = (number) => {
-    numberInput(number);
+  const handleNumberInput = (string) => {
+    displayValue(string);
   }
   const handleDotInput = (dot) => {
     dotInput(dot);
   }
-  const handleOperationInput = (buttonName) => {
-  
+  const handleOperationInput = (operator) => {
+    operatorInput(operator)
   }
   const handleModifyInput = (buttonName) => {
   
@@ -42,7 +42,7 @@ const MainControls = ({ numberInput, dotInput }) => {
           <Button name="3" clickHandler={handleNumberInput} />
           <Button name="+" clickHandler={handleOperationInput} mainOperation />
           <Button name="0" clickHandler={handleNumberInput} wide />
-          <Button name="," clickHandler={handleDotInput} />
+          <Button name="." clickHandler={handleDotInput} />
           <Button name="=" clickHandler={handleResultOutput} mainOperation />
       </div>
     )

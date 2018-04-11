@@ -3,24 +3,14 @@ export const displayValue = stringNumber => ({
   stringNumber
 })
 
-export const shouldWriteNew = state => ({
-  type: 'SHOULD_WRITE_NEW_NUMBER',
-  state
-})
-
-export const writeNumber = number => ({
-  type: 'WRITE_NUMBER',
-  number
+export const memoryNumberAndOperator = operator => ({
+  type: 'ON_OPERATOR',
+  operator
 })
 
 export const writeDot = dot => ({
   type: 'WRITE_DOT',
   dot
-})
-
-export const addOperator = number => ({
-  type: 'ADD_OPERATOR',
-  number
 })
 
 export const isScientific = state => ({

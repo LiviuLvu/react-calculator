@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import writeNumberReducer from './writeNumberReducer';
+import stateUpdateReducer from './stateUpdateReducer';
 
 const rootReducer = combineReducers({
-  writeNumberReducer
+  stateUpdateReducer
 });
 
 export default rootReducer;
