@@ -6,7 +6,6 @@ import MainControlsContainer from './containers/MainControlsContainer';
 import MemoryControls from './components/memory-controls/MemoryControls';
 import ButtonScientific from './components/button-scientific/ButtonScientific'
 import { handleKeyEvent } from './logic/HandleKeyEvent';
-import { modifyInput } from './logic/Modifyers';
 import { memoryClear, memoryAdd, memorySubtract, memoryRecall } from './logic/Memory'
 
 class CalculatorApp extends Component {

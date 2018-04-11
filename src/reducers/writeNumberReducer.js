@@ -4,20 +4,18 @@ const initialState = {
   writeNewNumber: false
 }
 
-export default function writeNumberReducer(state = initialState, action) {
+function writeNumberReducer(state = initialState, action) {
   let newState = Object.assign({}, state);
   let currentIndex = newState.numberArray.length-1;
   let numberInput = action.number ? action.number : '0';
   let numberArray = newState.numberArray;
 
-  newState.writeNewNumber ? writeNew() : editCurrent();
-  
   function writeNew() {
     numberArray.push(numberInput);
     currentIndex = numberArray.length-1;
     newState.writeNewNumber = false;
   };
-
+  
   function editCurrent() {
     if ( numberArray.length < 2 && numberArray[0] === '0' ) {
       numberArray[currentIndex] = numberInput;
@@ -26,12 +24,34 @@ export default function writeNumberReducer(state = initialState, action) {
     }
   };
 
-  newState.displayValue = numberArray[currentIndex];
+  function checkBeforeWriteDot() {
+    const HAS_DOT = /\./g;
+    if (HAS_DOT.test(numberArray[currentIndex])) {
+      return state;
+    }
+    newState.numberArray[currentIndex] = numberArray[currentIndex] += '.'
+  }
+
 
   switch (action.type) {
     case 'WRITE_NUMBER':
-      return newState;
+      newState.writeNewNumber ? writeNew() : editCurrent();
+      return {
+        displayValue: numberArray[currentIndex],
+        numberArray,
+        writeNewNumber: false
+      }
+
+    case 'WRITE_DOT':
+      checkBeforeWriteDot();
+      return {
+        displayValue: numberArray[currentIndex],
+        numberArray,
+        writeNewNumber: false
+      }
     default:
       return state
   }
 }
+
+export default writeNumberReducer;
