@@ -1,10 +1,8 @@
-export default function displayValueReducer(state = initialState, action) {
-  switch (action.type) {
-    case SET_DISPLAY_VALUE:
-      return Object.assign({}, state, {
-        displayValue: action.stringNumber
-      })
+export default function displayValueReducer(state = '0', action) {
+  switch(action.type) {
+    case 'SET_DISPLAY_VALUE':
+      return action.displayValue
     default:
-      return state
+      return state;
   }
 }

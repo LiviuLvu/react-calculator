@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
-import numberArray from './writeNumberReducer';
+import writeNumber from './writeNumberReducer';
+import displayValueReducer from './displayValueReducer';
 
 const rootReducer = combineReducers({
-  // accesed throughout application as: state.numberArray
-  numberArray
+  writeNumber,
+  displayValueReducer
 });
 
 export default rootReducer;

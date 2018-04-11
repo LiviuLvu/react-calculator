@@ -1,4 +1,4 @@
-import { writeNumber, writeOperationType, writeResult, clearAll, removeLastItem } from './WriteToDisplay';
+import { writeNumber, writeOperationType, writeResult, clearAll } from './WriteToDisplay';
 import { modifyInput } from './Modifyers';
 
 export function handleKeyEvent(state, key) {

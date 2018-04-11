@@ -8,7 +8,7 @@ export const shouldWriteNew = state => ({
   state
 })
 
-export const addNumber = number => ({
+export const writeNumber = number => ({
   type: 'WRITE_NUMBER',
   number
 })
