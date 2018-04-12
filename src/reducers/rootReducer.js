@@ -112,6 +112,7 @@ function displayDotReducer(displayValue, dot) {
 function calculateTotal(state) {
   let totalArray = state.numberArray;
   if (totalArray.length === 1 && !state.writeNewNumber) totalArray.push(state.displayValue);
+  if (totalArray.length < 2) return state.displayValue;
 
   let total = totalArray.reduce((prevNumber, nextNumber, currentIndex) => {
     let operator = state.operatorArray[currentIndex -1];
