@@ -27,8 +27,8 @@ function rootReducer(state = initialState, action) {
     case 'ON_OPERATOR':
       return {
         displayValue: state.displayValue,
-        numberArray: [...state.numberArray, state.displayValue],
-        operatorArray: [...state.operatorArray, action.operator],
+        numberArray: state.writeNewNumber ? state.numberArray : [...state.numberArray, state.displayValue],
+        operatorArray: operatorArrayReducer(state, action.operator),
         writeNewNumber: true,
         memory: state.memory
       }
@@ -124,6 +124,19 @@ function calculateTotal(state) {
 function modifyNumber(display, modifier) {
   if (modifier === '%') return String(+display / 100);
   else if (modifier === '±') return +display * -1;
+}
+
+function operatorArrayReducer(state, operator) {
+  let operatorArray = [...state.operatorArray];
+  
+  if (state.numberArray.length < 1)
+    return [operator];
+  else if (state.writeNewNumber && state.numberArray.length <= 1)
+    return [operator];
+  else if (state.writeNewNumber && state.numberArray.length > 1)
+    return [...operatorArray.slice(0, -1), operator];
+  else
+    return [...operatorArray, operator];
 }
 
 const operation = {
