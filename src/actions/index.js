@@ -3,14 +3,18 @@ export const displayValue = stringNumber => ({
   stringNumber
 })
 
+export const writeDot = dot => ({
+  type: 'WRITE_DOT',
+  dot
+})
+
 export const memoryNumberAndOperator = operator => ({
   type: 'ON_OPERATOR',
   operator
 })
 
-export const writeDot = dot => ({
-  type: 'WRITE_DOT',
-  dot
+export const calculateTotal = () => ({
+  type: 'CALC_TOTAL'
 })
 
 export const isScientific = state => ({
