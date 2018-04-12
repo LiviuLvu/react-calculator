@@ -24,7 +24,7 @@ function stateUpdateReducer(state = initialState, action) {
     case 'ON_OPERATOR':
       return {
         displayValue: state.displayValue,
-        numberArray: operatorReducer(state, action),
+        numberArray: [...state.numberArray, state.displayValue],
         operatorArray: [...state.operatorArray, action.operator],
         writeNewNumber: true
       }
@@ -46,8 +46,4 @@ function displayDotReducer(displayValue, dot) {
   const displayHasDot = /\./g;
   if (displayHasDot.test(displayValue)) return displayValue;
   return displayValue === '0' ? '0.' : displayValue + dot;
-}
-
-function operatorReducer(state, action) {
-  return [...state.numberArray, state.display];
 }
