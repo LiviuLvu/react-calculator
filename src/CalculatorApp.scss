@@ -1,10 +1,14 @@
 .calculator-app {
+  max-width: 220px;
   display: inline-block;
   border-radius: 6px;
   border: 1px solid gray;
   background-color: #999999;
   overflow: hidden;
   margin: 0 auto;
+}
+.scientific {
+  max-width: 270px;
 }
 .grid-container {
   display: grid;

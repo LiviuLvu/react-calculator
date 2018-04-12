@@ -22,7 +22,7 @@ class CalculatorApp extends Component {
 
   render() {
     return (
-      <div className="calculator-app">
+      <div className={'calculator-app' + (this.state.isScientific ? ' scientific' : '')}>
         <ButtonScientific clickHandler={this.isScientificVisible} />
         <DisplayContainer />
         <div className="grid-container">
