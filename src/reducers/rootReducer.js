@@ -85,7 +85,7 @@ function rootReducer(state = initialState, action) {
         displayValue: state.memory,
         numberArray: state.numberArray,
         operatorArray: state.operatorArray,
-        writeNewNumber: state.writeNewNumber,
+        writeNewNumber: false,
         memory: state.memory
       }
     default:
