@@ -2,58 +2,98 @@ const initialState = {
   displayValue: '0',
   numberArray: [],
   operatorArray: [],
-  writeNewNumber: true
+  writeNewNumber: true,
+  memory: 0
 }
 
-function stateUpdateReducer(state = initialState, action) {
+function rootReducer(state = initialState, action) {
   switch (action.type) {
     case 'SET_DISPLAY_VALUE':
       return {
         displayValue: displayNumberReducer(state, action.stringNumber),
         numberArray: state.numberArray,
         operatorArray: state.operatorArray,
-        writeNewNumber: false
+        writeNewNumber: false,
+        memory: state.memory
       }
     case 'WRITE_DOT':
       return {
         displayValue: displayDotReducer(state.displayValue, action.dot),
         numberArray: state.numberArray,
         operatorArray: state.operatorArray,
-        writeNewNumber: false
+        writeNewNumber: false,
+        memory: state.memory
       }
     case 'ON_OPERATOR':
       return {
         displayValue: state.displayValue,
         numberArray: [...state.numberArray, state.displayValue],
         operatorArray: [...state.operatorArray, action.operator],
-        writeNewNumber: true
+        writeNewNumber: true,
+        memory: state.memory
       }
     case 'CALC_TOTAL':
       return {
         displayValue: calculateTotal(state),
         numberArray: [],
         operatorArray: [],
-        writeNewNumber: true
+        writeNewNumber: true,
+        memory: state.memory
       }
     case 'ALL_CLEAR':
       return {
         displayValue: '0',
         numberArray: [],
         operatorArray: [],
-        writeNewNumber: true
+        writeNewNumber: true,
+        memory: state.memory
       }
     case 'MODIFY_NR':
       return {
         displayValue: modifyNumber(state.displayValue, action.modifier),
         numberArray: state.numberArray,
         operatorArray: state.operatorArray,
-        writeNewNumber: state.writeNewNumber
+        writeNewNumber: state.writeNewNumber,
+        memory: state.memory
+      }
+    case 'MEM_CLEAR':
+      return {
+        displayValue: state.displayValue,
+        numberArray: state.numberArray,
+        operatorArray: state.operatorArray,
+        writeNewNumber: state.writeNewNumber,
+        memory: 0
+      }
+    case 'MEM_ADD':
+      return {
+        displayValue: state.displayValue,
+        numberArray: state.numberArray,
+        operatorArray: state.operatorArray,
+        writeNewNumber: state.writeNewNumber,
+        memory: state.memory +(+state.displayValue)
+      }
+    case 'MEM_SUBTRACT':
+      return {
+        displayValue: state.displayValue,
+        numberArray: state.numberArray,
+        operatorArray: state.operatorArray,
+        writeNewNumber: state.writeNewNumber,
+        memory: state.memory - (+state.displayValue)
+      }
+    case 'MEM_RECALL':
+      return {
+        displayValue: state.memory,
+        numberArray: state.numberArray,
+        operatorArray: state.operatorArray,
+        writeNewNumber: state.writeNewNumber,
+        memory: state.memory
       }
     default:
       return state
   }
 }
-export default stateUpdateReducer;
+
+export default rootReducer;
 
 
 function displayNumberReducer(state, stringNumber) {

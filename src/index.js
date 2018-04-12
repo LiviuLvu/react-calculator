@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 import './index.css';
 import CalculatorApp from './CalculatorApp';
 import registerServiceWorker from './registerServiceWorker';
-import rootReducer from './reducers';
+import rootReducer from './reducers/rootReducer';
 
 const store = createStore(
   rootReducer,

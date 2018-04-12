@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   operatorInput: operator => dispatch(memoryNumberAndOperator(operator)),
   calculateTotal: () => dispatch(calculateTotal()),
   allClear: () => dispatch(allClear()),
-  modifyNumber: (modifier) => dispatch(modifyNumber(modifier))
+  modifyNumber: modifier => dispatch(modifyNumber(modifier))
 })
 
 export default connect(null, mapDispatchToProps)(MainControls);
