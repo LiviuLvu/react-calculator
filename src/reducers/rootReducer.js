@@ -104,9 +104,9 @@ function displayNumberReducer(state, stringNumber) {
 }
 
 function displayDotReducer(displayValue, dot) {
-  const displayHasDot = /\.,/g;
+  const displayHasDot = /[\.,]/g;
   if (displayHasDot.test(displayValue)) return displayValue;
-  return displayValue === '0' ? '0.' : displayValue + dot;
+  return displayValue === '0' ? `0${dot}` : displayValue + dot;
 }
 
 function calculateTotal(state) {
