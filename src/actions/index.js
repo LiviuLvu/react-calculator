@@ -21,12 +21,7 @@ export const allClear = () => ({
   type: 'ALL_CLEAR'
 })
 
-export const isScientific = state => ({
-  type: 'TOGGLE_IS_SCIENTIFIC',
-  state
-})
-
-export const memory = number => ({
-  type: 'SET_MEMORY_VALUE',
-  number
+export const modifyNumber = modifier => ({
+  type: 'MODIFY_NR',
+  modifier
 })

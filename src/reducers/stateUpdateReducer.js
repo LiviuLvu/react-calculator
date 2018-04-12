@@ -42,6 +42,13 @@ function stateUpdateReducer(state = initialState, action) {
         operatorArray: [],
         writeNewNumber: true
       }
+    case 'MODIFY_NR':
+      return {
+        displayValue: modifyNumber(state.displayValue, action.modifier),
+        numberArray: state.numberArray,
+        operatorArray: state.operatorArray,
+        writeNewNumber: state.writeNewNumber
+      }
     default:
       return state
   }
@@ -68,6 +75,11 @@ function calculateTotal(state) {
     return operation[operator](+prevNumber, +nextNumber);
   });
   return total;
+}
+
+function modifyNumber(display, modifier) {
+  if (modifier === '%') return String(+display / 100);
+  else if (modifier === '±') return +display * -1;
 }
 
 const operation = {

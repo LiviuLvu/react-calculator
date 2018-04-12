@@ -2,7 +2,7 @@ import React from 'react';
 import './MainControls.css';
 import Button from '../button/Button';
 
-const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal, allClear }) => {
+const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal, allClear, modifyNumber }) => {
   
   const handleNumberInput = (string) => {
     displayValue(string);
@@ -11,23 +11,23 @@ const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal, a
     dotInput(dot);
   }
   const handleOperationInput = (operator) => {
-    operatorInput(operator)
+    operatorInput(operator);
   }
-  const handleModifyInput = (buttonName) => {
-  
+  const handleModifyNr = (modifier) => {
+    modifyNumber(modifier);
   }
   const handleResultOutput = () => {
-    calculateTotal()
+    calculateTotal();
   }
   const handleAllClear = () => {
-    allClear()
+    allClear();
   }
 
     return(
       <div className="grid-main-control">
           <Button name="AC" clickHandler={handleAllClear} secondary />
-          <Button name="±" clickHandler={handleModifyInput} secondary />
-          <Button name="%" clickHandler={handleModifyInput} secondary />
+          <Button name="±" clickHandler={handleModifyNr} secondary />
+          <Button name="%" clickHandler={handleModifyNr} secondary />
           <Button name="/" clickHandler={handleOperationInput} mainOperation />
           <Button name="7" clickHandler={handleNumberInput} />
           <Button name="8" clickHandler={handleNumberInput} />
