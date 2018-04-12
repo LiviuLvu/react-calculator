@@ -1,8 +1,8 @@
 import React from 'react';
 import './MainControls.css';
-import Button from '../button/Button'
+import Button from '../button/Button';
 
-const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal }) => {
+const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal, allClear }) => {
   
   const handleNumberInput = (string) => {
     displayValue(string);
@@ -19,8 +19,8 @@ const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal })
   const handleResultOutput = () => {
     calculateTotal()
   }
-  const handleAllClear = (buttonName) => {
-  
+  const handleAllClear = () => {
+    allClear()
   }
 
     return(

@@ -35,6 +35,13 @@ function stateUpdateReducer(state = initialState, action) {
         operatorArray: [],
         writeNewNumber: true
       }
+    case 'ALL_CLEAR':
+      return {
+        displayValue: '0',
+        numberArray: [],
+        operatorArray: [],
+        writeNewNumber: true
+      }
     default:
       return state
   }

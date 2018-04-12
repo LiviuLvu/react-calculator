@@ -17,6 +17,10 @@ export const calculateTotal = () => ({
   type: 'CALC_TOTAL'
 })
 
+export const allClear = () => ({
+  type: 'ALL_CLEAR'
+})
+
 export const isScientific = state => ({
   type: 'TOGGLE_IS_SCIENTIFIC',
   state
