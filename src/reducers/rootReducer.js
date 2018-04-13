@@ -41,6 +41,7 @@ function rootReducer(state = initialState, action) {
     case 'ALL_CLEAR':
       return {
         ...state,
+        displayHistory: [],
         displayValue: '0',
         numberArray: [],
         operatorArray: [],
