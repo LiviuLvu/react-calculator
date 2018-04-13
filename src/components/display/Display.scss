@@ -1,16 +1,24 @@
 .input-container {
-  padding-top: 12px;
+  padding-top: 33px;
   height: 66px;
   overflow: hidden;
   font-weight: 100;
   font-size: 50px;
   white-space: nowrap;
-  word-spacing: -12px;
+  word-spacing: -2px;
   font-family: Helvetica, Arial, sans-serif;
   text-align: right;
   background-color: inherit;
   color: white;
   div {
+    position: relative;
+    right: 10px;
+    top: -34px;
     float: right;
+    clear: both;
   }
+}
+.displayHistory {
+  margin-bottom: 8px;
+  font-size: 0.3em;
 }

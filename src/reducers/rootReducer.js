@@ -1,5 +1,6 @@
 const initialState = {
   displayValue: '0',
+  displayHistory: '0 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 +',
   numberArray: [],
   operatorArray: [],
   writeNewNumber: true,

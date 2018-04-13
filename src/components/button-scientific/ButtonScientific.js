@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './ButtonScientific.css';
 
 export default class ButtonScientific extends Component {
   handleClick = () => {
@@ -9,9 +10,10 @@ export default class ButtonScientific extends Component {
 
     return(
       <button
+        className="toggle-scientific"
         type="button"
         onClick={this.handleClick} >
-        {'<'}
+        {'M'}
       </button>
     )
   }
