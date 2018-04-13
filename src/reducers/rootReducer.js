@@ -36,7 +36,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         displayHistory: [],
         displayValue: calculateTotal(state),
-        numberArray: [],
+        numberArray: [calculateTotal(state)],
         operatorArray: [],
         writeNewNumber: true,
       }
@@ -79,8 +79,8 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default undoable(rootReducer, {});
-
+const undoableTodos =  undoable(rootReducer);
+export default undoableTodos;
 
 function displayNumberReducer(state, stringNumber) {
   const stringIncludesDot = /\./g;
