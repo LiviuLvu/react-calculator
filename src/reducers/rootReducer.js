@@ -128,6 +128,8 @@ function operatorArrayReducer(state, operator) {
 function displayHistoryReducer(state, operator) {
   if (state.displayHistory.length < 2)
     return [state.displayValue, operator];
+  if (state.writeNewNumber && state.displayHistory.length <= 2) 
+    return [state.displayValue, operator];
   else
     return [...state.displayHistory, state.displayValue, operator];
 }
