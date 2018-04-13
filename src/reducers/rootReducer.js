@@ -1,3 +1,5 @@
+import undoable from 'redux-undo';
+
 const initialState = {
   displayValue: '0',
   displayHistory: [],
@@ -77,7 +79,7 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default undoable(rootReducer, {});
 
 
 function displayNumberReducer(state, stringNumber) {
