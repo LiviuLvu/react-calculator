@@ -1,5 +1,5 @@
 import React from 'react'
-import { ActionCreators as UndoActionCreators } from 'redux-undo'
+import { ActionCreators } from 'redux-undo';
 import { connect } from 'react-redux';
 import rootReducer from '../reducers/rootReducer';
 
@@ -21,8 +21,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  onUndo: UndoActionCreators.undo,
-  onRedo: UndoActionCreators.redo
+  onUndo: () => dispatch(ActionCreators.undo()),
+  onRedo: () => dispatch(ActionCreators.redo())
 })
 
 UndoRedo = connect(

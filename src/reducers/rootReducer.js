@@ -1,4 +1,4 @@
-import undoable from 'redux-undo';
+import undoable, { distinctState } from 'redux-undo';
 
 const initialState = {
   displayValue: '0',
@@ -79,7 +79,7 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-const undoableTodos =  undoable(rootReducer);
+const undoableTodos =  undoable(rootReducer, {filter: distinctState()});
 export default undoableTodos;
 
 function displayNumberReducer(state, stringNumber) {
