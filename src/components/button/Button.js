@@ -11,7 +11,7 @@ export default class Button extends Component {
     const name = this.props.name;
     if (this.props.name === '±') return <span><sup>+</sup>⁄<sub>-</sub></span>;
     else if (this.props.name === '/') return('÷');
-    else if (this.props.name === '*') return('×') ;
+    else if (this.props.name === 'x') return('×') ;
     else if (this.props.name === '-') return('−') ;
     else if (this.props.name === '+') return('+') ;
     return name;

@@ -1,6 +1,6 @@
 const initialState = {
   displayValue: '0',
-  displayHistory: '0 + 1 + 0 + 1 + 0 + 1 + 0 + 1 + 0 +',
+  displayHistory: [],
   numberArray: [],
   operatorArray: [],
   writeNewNumber: true,
@@ -24,6 +24,7 @@ function rootReducer(state = initialState, action) {
     case 'ON_OPERATOR':
       return {
         ...state,
+        displayHistory: displayHistoryReducer(state, action.operator),
         numberArray: state.writeNewNumber ? state.numberArray : [...state.numberArray, state.displayValue],
         operatorArray: operatorArrayReducer(state, action.operator),
         writeNewNumber: true,
@@ -31,6 +32,7 @@ function rootReducer(state = initialState, action) {
     case 'CALC_TOTAL':
       return {
         ...state,
+        displayHistory: [],
         displayValue: calculateTotal(state),
         numberArray: [],
         operatorArray: [],
@@ -120,9 +122,16 @@ function operatorArrayReducer(state, operator) {
     return [...operatorArray, operator];
 }
 
+function displayHistoryReducer(state, operator) {
+  if (state.displayHistory.length < 2)
+    return [state.displayValue, operator];
+  else
+    return [...state.displayHistory, state.displayValue, operator];
+}
+
 const operation = {
   '/': (prevValue, nextValue) => prevValue / nextValue,
-  '*': (prevValue, nextValue) => prevValue * nextValue,
+  'x': (prevValue, nextValue) => prevValue * nextValue,
   '+': (prevValue, nextValue) => prevValue + nextValue,
   '-': (prevValue, nextValue) => prevValue - nextValue
 }

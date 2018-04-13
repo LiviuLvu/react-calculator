@@ -32,7 +32,7 @@ const MainControls = ({ displayValue, operatorInput, dotInput, calculateTotal, a
           <Button name="7" clickHandler={handleNumberInput} />
           <Button name="8" clickHandler={handleNumberInput} />
           <Button name="9" clickHandler={handleNumberInput} />
-          <Button name="*" clickHandler={handleOperationInput} mainOperation />
+          <Button name="x" clickHandler={handleOperationInput} mainOperation />
           <Button name="4" clickHandler={handleNumberInput} />
           <Button name="5" clickHandler={handleNumberInput} />
           <Button name="6" clickHandler={handleNumberInput} />
